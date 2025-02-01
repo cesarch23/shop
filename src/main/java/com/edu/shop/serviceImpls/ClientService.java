@@ -47,7 +47,7 @@ public class ClientService implements ClientInterface {
                     clientRepository.findClientByEmail(clientDTO.getMail()).map(clientMapper::toDTO) :
                     Optional.empty();
         }
-        throw new BusinessException(BusinessExceptionReason.CLIENT_NOT_FOUND,clientDTO.getMail());
+        throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El cliente con el email: "+clientDTO.getMail());
     }
 
     @Override
