@@ -4,16 +4,10 @@ import java.util.UUID;
 
 public class CategoryDTO {
     private UUID categoryId;
-    private String descrioption;
+    private String description;
     private Boolean isActive;
     public CategoryDTO(){
 
-    }
-
-    public CategoryDTO(UUID categoryId, String descrioption, Boolean isActive) {
-        this.categoryId = categoryId;
-        this.descrioption = descrioption;
-        this.isActive = isActive;
     }
 
     public UUID getCategoryId() {
@@ -24,19 +18,19 @@ public class CategoryDTO {
         this.categoryId = categoryId;
     }
 
-    public String getDescrioption() {
-        return descrioption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrioption(String descrioption) {
-        this.descrioption = descrioption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Boolean getActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setIsActive(Boolean active) {
         isActive = active;
     }
 }

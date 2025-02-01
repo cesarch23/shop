@@ -13,12 +13,12 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(name = "category_description",nullable = false,length = 45)
+    @Column(name = "category_description",nullable = false,length = 45,unique = true)
     private String description;
     @Column(name = "category_state",nullable = false)
     private Boolean state;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
     // TODO con cascade se puede crear crear una categoria con todos los productos que contenga
     private List<Product> product;
 

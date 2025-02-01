@@ -5,8 +5,11 @@ import org.springframework.http.HttpStatus;
 
 public enum BusinessExceptionReason implements BusinessExceptionPolicy {
 
+
     CLIENT_WITH_EMAIL_EXITS("El cliente con el email %s ya existe", HttpStatus.NOT_FOUND),
-    CLIENT_NOT_FOUND ( "El cliente con email %s no existe", HttpStatus.NOT_FOUND);
+    ENTITY_NOT_FOUND("%s, no existe",HttpStatus.NOT_FOUND),
+    ENTITY_CONFICT("%s",HttpStatus.CONFLICT),
+    ENTITY_EXITS("%s ya existe ",HttpStatus.NOT_FOUND);
     //TODO: deben coincidir con la cantidad y tipo de parámetros del contrsuctor
     //TODO  declaracion de constantes con parametros
     //TODO: o "enum con constructores y atributos"
