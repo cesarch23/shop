@@ -49,5 +49,8 @@ public class CategoryService implements CategoryInterface {
     public Boolean existsByDescription(String description){
         return categoryRepository.existsByDescription(description);
     }
+    public boolean existsById(UUID id){
+        return categoryRepository.existsById(id);
+    }
 
 }

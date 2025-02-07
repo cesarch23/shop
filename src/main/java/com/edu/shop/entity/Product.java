@@ -28,23 +28,28 @@ public class Product {
     @Column(name = "product_state",nullable = false)
     private Boolean state;
 
+
+    @Column(name = "category_id",nullable = false)
+    private UUID categoryId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "category_id", referencedColumnName="category_id",
             foreignKey = @ForeignKey(name = "fk_product_category"),
-            updatable = false,insertable = true,unique = true,nullable = false)
+            updatable = false,insertable = false,nullable = false)
     private Category category;
     //    @OneToMany(mappedBy = "product") no es necesario la relacion
 //    private List<ShoppingProduct> shoppingProduct;
     public Product(){}
-    public Product(UUID id, String name, String barcode, Double salePrice, Integer stock, Boolean state, Category category) {
+
+    public Product(UUID id, String name, String barcode, Double salePrice, Integer stock, Boolean state, UUID categoryId) {
         this.id = id;
         this.name = name;
         this.barcode = barcode;
         this.salePrice = salePrice;
         this.stock = stock;
         this.state = state;
-        this.category = category;
+        this.categoryId = categoryId;
+
     }
 
     public UUID getId() {
@@ -93,6 +98,14 @@ public class Product {
 
     public void setState(Boolean state) {
         this.state = state;
+    }
+
+    public UUID getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(UUID categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Category getCategory() {

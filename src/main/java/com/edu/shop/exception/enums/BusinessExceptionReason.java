@@ -10,9 +10,7 @@ public enum BusinessExceptionReason implements BusinessExceptionPolicy {
     ENTITY_NOT_FOUND("%s, no existe",HttpStatus.NOT_FOUND),
     ENTITY_CONFICT("%s",HttpStatus.CONFLICT),
     ENTITY_EXITS("%s ya existe ",HttpStatus.NOT_FOUND);
-    //TODO: deben coincidir con la cantidad y tipo de parámetros del contrsuctor
-    //TODO  declaracion de constantes con parametros
-    //TODO: o "enum con constructores y atributos"
+
     private final String code;
     private final String message;
     private final HttpStatus httpStatus;
