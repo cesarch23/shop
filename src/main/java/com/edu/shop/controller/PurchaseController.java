@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "api/shopping")
@@ -31,5 +33,13 @@ public class PurchaseController {
             throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El cliente");
         }
         return new ResponseEntity<>(shoppingService.save(shoppingDTO), HttpStatus.OK);
+    }
+    @GetMapping(path = "client/{clientId}")
+    public ResponseEntity<List<ShoppingDTO>> getByClientId(@PathVariable UUID clientId){
+        if(!clientService.exitById( clientId )){
+            throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El cliente");
+        }
+        List<ShoppingDTO> list = shoppingService.getByClientId(clientId);
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 }

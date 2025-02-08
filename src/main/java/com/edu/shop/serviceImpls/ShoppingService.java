@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -78,11 +79,11 @@ public class ShoppingService implements ShoppingInterface {
     }
 
     @Override
-    public ShoppingDTO getByClientId(UUID clientId) {
-        return null;
+    public List<ShoppingDTO> getByClientId(UUID clientId) {
+
+        return shoppingMapper.toDTOList( shoppingRepository.findByClientId(clientId));
+
     }
-
-
     @Override
     public List<ShoppingDTO> getAll() {
         return shoppingMapper.toDTOList(shoppingRepository.findAll());
