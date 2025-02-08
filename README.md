@@ -10,7 +10,6 @@
 ## Convenciones Generales
 - Base URL: `/api`
 - Formato de respuesta: JSON
-- Autenticación: Bearer Token
 - Códigos de estado HTTP estándar
 
 ## Categorías
@@ -265,11 +264,6 @@ Obtiene todas las compras realizadas por un cliente específico.
 - 409: Conflicto (duplicación)
 - 500: Error interno del servidor
 
-### Razones de Error Comunes
-- ENTITY_NOT_FOUND: El recurso solicitado no existe
-- ENTITY_EXISTS: Intento de crear un recurso duplicado
-- CLIENT_WITH_EMAIL_EXISTS: Email de cliente duplicado
-- PRODUCT_STOCK_UNAVAILABLE: Stock insuficiente
 
 ## Modelos de Datos
 
