@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ClientService implements ClientInterface {
@@ -67,6 +68,8 @@ public class ClientService implements ClientInterface {
     public boolean exitByEmail(String email){
         return clientRepository.existsClientByEmail(email);
     }
-
+    public boolean exitById(UUID clientId){
+        return clientRepository.existsById(clientId);
+    }
 
 }

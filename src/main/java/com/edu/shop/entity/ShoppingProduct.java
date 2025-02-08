@@ -11,15 +11,12 @@ public class ShoppingProduct {
     private ShoppingProductPK id;
     @Column(name = "shopping_produt_quantity",nullable = false)
     private Integer quantity;
-
     @Column(name = "shopping_produt_total",nullable = false)
     private Double total;
-
     @Column(name = "shopping_produt_state",nullable = false)
     private Boolean state;
-
-    @ManyToOne
-    @MapsId("shoppingId")//vincula el id de esta clase con el de shopping
+    @ManyToOne()
+    @MapsId("shoppingId")//vincula el id con el clave compuesta
     @JoinColumn(
             name = "shopping_id",
             referencedColumnName = "shopping_id",
@@ -30,7 +27,7 @@ public class ShoppingProduct {
     )
     private Shopping shopping;
 
-    @ManyToOne
+    @ManyToOne()
     @MapsId("productId")
     @JoinColumn(
             name = "product_id",

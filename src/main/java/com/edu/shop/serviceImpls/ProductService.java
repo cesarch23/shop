@@ -77,4 +77,7 @@ public class ProductService implements ProductInterface {
                 }).orElse(false);
 
     }
+    public boolean existById(UUID productId){
+        return productRepository.existsById(productId);
+    }
 }

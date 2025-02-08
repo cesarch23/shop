@@ -15,13 +15,14 @@ public class Shopping {
 
     @Column(name = "shopping_date",nullable = false)
     private Date date;
-    @Column(name = "shopping_payment_method",nullable = false,length = 1)
+    @Column(name = "shopping_payment_method",nullable = false)
     private String paymentMethod;
     @Column(name = "shopping_comment",length = 300)
     private String comment;
     @Column(name = "shopping_state",nullable = false)
     private Boolean state;
-
+    @Column(name = "client_id",nullable = false)
+    private UUID clientId;
     @ManyToOne()
     @JoinColumn(
             name = "client_id",
@@ -31,19 +32,28 @@ public class Shopping {
             updatable = false)
     private Client client;
 
-    @OneToMany(mappedBy = "shopping", cascade =CascadeType.ALL)
+    @OneToMany(mappedBy = "shopping", cascade = {CascadeType.ALL})
     private List<ShoppingProduct> shoppingProduct;
 
     public Shopping(){}
 
-    public Shopping(UUID id, Date date, String paymentMethod, String comment, Boolean state, Client client, List<ShoppingProduct> shoppingProduct) {
+    public Shopping(UUID id, Date date, String paymentMethod, String comment, Boolean state, UUID clientId, Client client, List<ShoppingProduct> shoppingProduct) {
         this.id = id;
         this.date = date;
         this.paymentMethod = paymentMethod;
         this.comment = comment;
         this.state = state;
+        this.clientId = clientId;
         this.client = client;
         this.shoppingProduct = shoppingProduct;
+    }
+
+    public UUID getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(UUID clientId) {
+        this.clientId = clientId;
     }
 
     public UUID getId() {

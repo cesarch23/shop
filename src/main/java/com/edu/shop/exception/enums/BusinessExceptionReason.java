@@ -8,6 +8,7 @@ public enum BusinessExceptionReason implements BusinessExceptionPolicy {
 
     CLIENT_WITH_EMAIL_EXITS("El cliente con el email %s ya existe", HttpStatus.NOT_FOUND),
     ENTITY_NOT_FOUND("%s, no existe",HttpStatus.NOT_FOUND),
+    PRODUCT_STOCK_UNAVAILABLE("No hay suficiente stock disponible para el producto %s",HttpStatus.CONFLICT),
     ENTITY_CONFICT("%s",HttpStatus.CONFLICT),
     ENTITY_EXITS("%s ya existe ",HttpStatus.NOT_FOUND);
 
