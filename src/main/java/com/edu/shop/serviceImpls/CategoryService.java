@@ -7,6 +7,7 @@ import com.edu.shop.exception.enums.BusinessExceptionReason;
 import com.edu.shop.mapper.CategoryMapper;
 import com.edu.shop.repository.CategoryRepository;
 import com.edu.shop.service.CategoryInterface;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class CategoryService implements CategoryInterface {
     CategoryRepository categoryRepository;
 
     @Override
+    @Transactional
     public CategoryDTO add(CategoryDTO categoryDTO) {
         if( existsByDescription (categoryDTO.getDescription()))
             throw new BusinessException(BusinessExceptionReason.ENTITY_EXITS,"La Categoria con la descripcion: "+categoryDTO.getDescription());

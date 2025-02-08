@@ -7,6 +7,7 @@ import com.edu.shop.exception.enums.BusinessExceptionReason;
 import com.edu.shop.mapper.ProductMapper;
 import com.edu.shop.repository.ProductRepository;
 import com.edu.shop.service.ProductInterface;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class ProductService implements ProductInterface {
 
 
     @Override
+    @Transactional
     public ProductDTO save(ProductDTO productDTO) {
         Product product = productMapper.toEntity(productDTO);
         if (!productRepository.existsByBarcode(product.getBarcode())) {
@@ -35,6 +37,7 @@ public class ProductService implements ProductInterface {
     }
 
     @Override
+    @Transactional
     public ProductDTO update(ProductDTO productDTO) {
         if(!productRepository.existsById(productDTO.getProductId())){
             throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El producto "+productDTO.getName());
@@ -62,6 +65,7 @@ public class ProductService implements ProductInterface {
     }
 
     @Override
+    @Transactional
     public Boolean delete(UUID productId) {
         if(!productRepository.existsById(productId)){
             throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El producto ");

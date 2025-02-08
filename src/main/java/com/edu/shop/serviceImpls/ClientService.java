@@ -7,6 +7,7 @@ import com.edu.shop.exception.enums.BusinessExceptionReason;
 import com.edu.shop.mapper.ClientMapper;
 import com.edu.shop.repository.ClientRepository;
 import com.edu.shop.service.ClientInterface;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class ClientService implements ClientInterface {
 
 
     @Override
+    @Transactional
     public ClientDTO save(ClientDTO clientDTO)
     {
         if(this.exitByEmail(clientDTO.getMail())){
