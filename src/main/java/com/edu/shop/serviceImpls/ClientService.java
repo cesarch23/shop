@@ -9,6 +9,7 @@ import com.edu.shop.repository.ClientRepository;
 import com.edu.shop.service.ClientInterface;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,6 +54,7 @@ public class ClientService implements ClientInterface {
         throw new BusinessException(BusinessExceptionReason.ENTITY_NOT_FOUND,"El cliente con el email: "+clientDTO.getMail());
     }
 
+    @Secured("ROLE_ADMIN")
     @Override
     public List<ClientDTO> getAllClients() {
         List <Client> clients = clientRepository.findAll();
