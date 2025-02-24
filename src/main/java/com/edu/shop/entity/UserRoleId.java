@@ -5,15 +5,15 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class UserRoleId implements Serializable {
-    private UUID id;
+    private UUID userId;
     private String role;
 
-    public UUID getId() {
-        return id;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setUserId(UUID id) {
+        this.userId = id;
     }
 
     public String getRole() {
@@ -28,11 +28,11 @@ public class UserRoleId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserRoleId that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(role, that.role);
+        return Objects.equals(userId, that.userId) && Objects.equals(role, that.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, role);
+        return Objects.hash(userId, role);
     }
 }

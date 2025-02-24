@@ -9,11 +9,11 @@ public class ErrorResponse {
     private LocalDateTime timestamp;
 
 
-    public ErrorResponse(String code, String message, Integer status, LocalDateTime timestamp) {
+    public ErrorResponse(String code, String message, Integer status) {
         this.code = code;
         this.message = message;
         this.status = status;
-        this.timestamp = timestamp;
+        this.timestamp = LocalDateTime.now();
 
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +27,7 @@ public class GlobalApiExceptionHandler extends ResponseEntityExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(
                 exception.getCode(),
                 exception.getMessage(),
-                exception.getHttpStatus()!= null ? exception.getHttpStatus().value() : HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                LocalDateTime.now()
+                exception.getHttpStatus()!= null ? exception.getHttpStatus().value() : HttpStatus.INTERNAL_SERVER_ERROR.value()
                 //TODO ADD INVALID PARAMETERS
         );
         return new ResponseEntity<>(errorResponse,exception.httpStatus);
@@ -37,8 +37,7 @@ public class GlobalApiExceptionHandler extends ResponseEntityExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(
                 "INTERNAL SERVER ERROR",
                 "Ocurrio un error inesperado",
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                LocalDateTime.now()
+                HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
         return new ResponseEntity<>(errorResponse,HttpStatus.INTERNAL_SERVER_ERROR);
     }

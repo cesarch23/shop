@@ -14,12 +14,12 @@ public class CorsConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST"));
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));// Orígenes permitidos
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));// Métodos permitidos
+        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));// Headers permitidos
 
         UrlBasedCorsConfigurationSource source =  new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",corsConfiguration);
+        source.registerCorsConfiguration("/**",corsConfiguration);// Aplica a todos los endpoints
         return source;
     }
 }

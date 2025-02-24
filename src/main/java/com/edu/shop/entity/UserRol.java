@@ -11,7 +11,7 @@ public class UserRol {
 
     @Id
     @Column(name = "user_id",nullable = false)
-    private UUID id;
+    private UUID userId;
     @Id
     @Column(nullable = false,length = 25)
     private String role;
@@ -27,18 +27,18 @@ public class UserRol {
     private User user;
     public UserRol(){}
     public UserRol(UUID id, String role, LocalDateTime grantedDate, User user) {
-        this.id = id;
+        this.userId = id;
         this.role = role;
         this.grantedDate = grantedDate;
         this.user = user;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setUserId(UUID id) {
+        this.userId = id;
     }
 
     public String getRole() {

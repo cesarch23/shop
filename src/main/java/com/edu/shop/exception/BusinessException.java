@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 
 public class BusinessException extends RuntimeException implements BusinessExceptionPolicy {
 
-    // TODO CAMBIE EL FINAL DEL PROTECTED,SIN OVERRRIDE???
     protected final String code;
     protected final String message;
     protected final HttpStatus httpStatus;
